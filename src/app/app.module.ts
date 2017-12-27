@@ -5,18 +5,30 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { RouterModule, Routes} from '@angular/router';
+import { AboutComponent } from './about/about.component';
+import { TestsComponent } from './tests/tests.component';
+import {ServiceService} from './service.service';
 
+const routes : Routes = [
+  { path : '' , component:AboutComponent },
+  { path : 'about' , component:AboutComponent },
+  { path : 'tests' , component:TestsComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent,
+    TestsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
